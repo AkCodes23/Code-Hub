@@ -1,0 +1,27 @@
+Write a program in C to store and display information of a student using a struct
+
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    char name[50];
+    int rollNumber;
+    float marks;
+};
+
+int main() {
+    struct Student student1;
+
+    // Storing information
+    strcpy(student1.name, "John Doe");
+    student1.rollNumber = 10;
+    student1.marks = 89.5;
+
+    // Displaying information
+    printf("Student Information:\n");
+    printf("Name: %s\n", student1.name);
+    printf("Roll Number: %d\n", student1.rollNumber);
+    printf("Marks: %.2f\n", student1.marks);
+
+    return 0;
+}
