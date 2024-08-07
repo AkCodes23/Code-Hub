@@ -1,0 +1,4 @@
+Questions for the Day:  
+Easy: Write a function in C to find the maximum and minimum elements in an array.
+Medium: Write a program in C to store and display information of a student using a struct.
+Medium: Implement a function in C to sort a stack using only stack operations (push, pop, top, isempty, isfull).
