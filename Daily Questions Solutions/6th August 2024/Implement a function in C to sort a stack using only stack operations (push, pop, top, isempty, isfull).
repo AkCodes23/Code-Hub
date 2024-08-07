@@ -1,0 +1,89 @@
+Implement a function in C to sort a stack using only stack operations (push, pop, top, isempty, isfull).
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+typedef struct {
+    int arr[MAX];
+    int top;
+} Stack;
+
+void init(Stack *s) {
+    s->top = -1;
+}
+
+int isFull(Stack *s) {
+    return s->top == MAX - 1;
+}
+
+int isEmpty(Stack *s) {
+    return s->top == -1;
+}
+
+void push(Stack *s, int value) {
+    if (!isFull(s)) {
+        s->arr[++(s->top)] = value;
+    }
+}
+
+int pop(Stack *s) {
+    if (!isEmpty(s)) {
+        return s->arr[(s->top)--];
+    }
+    return -1; // Return -1 if stack is empty
+}
+
+int top(Stack *s) {
+    if (!isEmpty(s)) {
+        return s->arr[s->top];
+    }
+    return -1; // Return -1 if stack is empty
+}
+
+void sortedInsert(Stack *s, int value) {
+    if (isEmpty(s) || value > top(s)) {
+        push(s, value);
+    } else {
+        int temp = pop(s);
+        sortedInsert(s, value);
+        push(s, temp);
+    }
+}
+
+void sortStack(Stack *s) {
+    if (!isEmpty(s)) {
+        int temp = pop(s);
+        sortStack(s);
+        sortedInsert(s, temp);
+    }
+}
+
+void printStack(Stack *s) {
+    for (int i = 0; i <= s->top; i++) {
+        printf("%d ", s->arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    Stack s;
+    init(&s);
+
+    push(&s, 30);
+    push(&s, -5);
+    push(&s, 18);
+    push(&s, 14);
+    push(&s, -3);
+
+    printf("Original Stack:\n");
+    printStack(&s);
+
+    sortStack(&s);
+
+    printf("Sorted Stack:\n");
+    printStack(&s);
+
+    return 0;
+}
