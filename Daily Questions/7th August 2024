@@ -1,0 +1,4 @@
+Questions for the Day:
+Easy: Write a function in C to reverse a string.
+Medium: Write a program in C to store and display information of an employee using a struct.
+Medium: Implement a function in C to sort an array using only queue operations (enqueue, dequeue, front, is_empty, is_full).
